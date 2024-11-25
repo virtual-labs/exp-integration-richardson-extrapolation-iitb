@@ -1,1 +1,1 @@
-## Experiment name
+## Integration - Richardson Extrapolation for Integration
