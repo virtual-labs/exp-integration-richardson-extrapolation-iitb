@@ -1,11 +1,1 @@
-﻿<h3>Aim:</h3> 
-<p>To calculate the integration using with Richardson Extrapolation</p>
-
-
-
-
-
-
-
-
-
+<h2>AIM: To study method based on Interpolation (Lagrange's Method)</h2>
