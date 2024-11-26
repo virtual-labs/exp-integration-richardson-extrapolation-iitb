@@ -1,13 +1,12 @@
 function activity2() {
     let text = `
-
     <div class='divide'>
     <div style='margin-top: 2vw;'>
         <br>
         <h4 class="center-text fs-20px fw-600"></h4>
 
         <div class="fs-16px">
-        <p>Learning Objective: Calculate integral with different step size </p>
+        <p>Learning Objective: Find f''(x)</p>
         </div>
 
         <button class='btn btn-info std-btn' style='position: relative; left: 50vw;' onclick='start_act2();' id='temp-btn-2' >Next</button>
@@ -23,78 +22,84 @@ function start_act2() {
     if (temp_btn) {
         temp_btn.remove();
     }
-    let btn_text = get_collapse_btn_text("Calculate with different divisions", "tb2-box");
+    let btn_text = get_collapse_btn_text("Calculate y values", "tb2-box");
     let text = `
     ${btn_text}
     <div class='collapse divide' style='style='margin-top: 2vw; 'width: 80%; margin: auto;' id='tb2-box'>
 
-    <p>Calculate the integral with different step size using trapaziodal rule and estimate the error by comparing with exact solution.<p>
-        <br>
-        <p >Upper limit (x<sub>2</sub>) = 0.8 and lower limit (x<sub>2</sub>) = 0</p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ h = \\frac{x_2 - x_1}{no. of divisions}  $$</span></p>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f(x) = f_0\\frac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)} + f_1\\frac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)} + f_2\\frac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)} $$</span></p>
+
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f'(x) = f_0\\frac{2x - x_1 - x_2}{(x_0 - x_1)(x_0 - x_2)} + f_1\\frac{2x - x_0 - x_2}{(x_1 - x_0)(x_1 - x_2)} + f_2\\frac{2x - x_0 - x_1}{(x_2 - x_0)(x_2 - x_1)} $$</span></p>
+
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f''(x) = \\frac{2f_0}{(x_0 - x_1)(x_0 - x_2)} + \\frac{2f_1}{(x_1 - x_0)(x_1 - x_2)} + \\frac{2f_2}{(x_2 - x_0)(x_2 - x_1)} $$</span></p>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f''(x) = f_0L''_0 + f_1L''_1 + f_2L''_2 $$</span></p>
 
         <br>
-        <p>For number of divisions  = 1</p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ h_1 \\ = \\ 0.8 $$</span></p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ I_1 \\ = \\ \\frac{h_1}{2} (f(x_1) + f(x_1 + h_1))  $$</span></p>
 
-        <br>
-        <p>For number of divisions  = 2</p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ h_2 \\ = \\ 0.4 $$</span></p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ I_2 = \\frac{h_2}{2} (f(x_1) + 2f(x_1 + h_2) + f(x_1 + 2h_2))  $$</span></p>
+        <p style='text-align: center; font-size: 18px;'>Find <span style='display: inline-block;' >$$ f''(x) $$</span></p>
 
-        <br>
-        <p>For number of divisions  = 4</p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ h_3 \\ = \\ 0.2 $$</span></p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ I_3 = \\frac{h_3}{2} (f(x_1) + 2f(x_1 + h_3) + 2f(x_1 + 2h_3) + 2f(x_1 + 3h_3) + f(x_1 + 4h_3)) $$</span></p>
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L''_0 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l21-inp' > <span id='l21-val-sp'></span></div>
 
-        <br>
-        <p>For calculating error</p>
-        <p style='text-align: center;'><span style='font-style: 25px;'>$$ percent \\ error \\ = \\ \\left | \\frac{exact \\ integral \\ value - I}{exact \\ integral \\ value} \\right | * 100  $$</span></p>
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L'_1 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l22-inp' > <span id='l22-val-sp'></span></div>
 
-        <br>
-        <p>Now Calculate the corresponding I and error values in table using equaitons above.</p>
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L''_2 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l23-inp' > <span id='l23-val-sp'></span></div>
 
-
-
-        <div style='text-align: center;'>
-            <div id='a2-tab'></div>
-            <br>
-
-        </div>
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ f''(x) = f_0L''_0 + f_1L''_1 + f_2L''_2 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='f2-inp' > <span id='f2-val-sp'></span></div>
+    
         <br>
 
+        <div style='text-align: center;'><button class='btn btn-info std-btn' onclick='verify_a2();'  id='temp-btn-20' >Verify</button></div>
+        
     </div>
 
     `;
     maindiv.innerHTML += text;
     show_step('tb2-box');
-    table_calculations();
+    internal_calculations1();
     setTimeout(() => { MathJax.typeset(); }, 300);
 }
-function table_calculations() {
-    let ele = document.getElementById('a2-tab');
-    let header = ['Number of divisions', 'Step Size (h)', "Integral", '%Error'];
-    tb_data = [
-        [1, `h<sub>1</sub> = 0.8`, trap(1), calculate_error_percent(ei, trap(1))],
-        [2, `h<sub>2</sub> = 0.4`, trap(2), calculate_error_percent(ei, trap(2))],
-        [4, `h<sub>3</sub> = 0.2`, trap(4), calculate_error_percent(ei, trap(4))]
-    ];
-    let tb = new Verify_Rows_Cols_Strings(header, tb_data, [0, 1, 2], [[2, 3], [2, 3], [2, 3]], '', ele, true, true, activity3);
-    tb.load_table();
+function internal_calculations1() {
+    l20 = (2) / ((X[0] - X[1]) * (X[0] - X[2]));
+    l21 = (2) / ((X[1] - X[0]) * (X[1] - X[2]));
+    l22 = (2) / ((X[2] - X[0]) * (X[2] - X[1]));
+    f2 = Y[0] * l20 + Y[1] * l21 + Y[2] * l22;
 }
-function verify_ei2() {
-    let btn = document.getElementById('temp-btn-1234');
-    console.log(`exact integral value => ${ei}`);
-    let inp = document.getElementById('ei-inp');
-    let sp = document.getElementById('ei-val-sp');
-    if (!verify_values(parseFloat(inp.value), ei)) {
-        alert('Exact integral value is incorrect, calculate again.');
+function verify_a2() {
+    let btn = document.getElementById('temp-btn-20');
+    console.log(`l0 => ${l20}, l1 => ${l21}, l2 => ${l22}, y = ${f2}`);
+    let inp = document.getElementById('l21-inp');
+    let sp = document.getElementById('l21-val-sp');
+    let inp1 = document.getElementById('l22-inp');
+    let sp1 = document.getElementById('l22-val-sp');
+    let inp2 = document.getElementById('l23-inp');
+    let sp2 = document.getElementById('l23-val-sp');
+    let inp3 = document.getElementById('f2-inp');
+    let sp3 = document.getElementById('f2-val-sp');
+    if (!verify_values(parseFloat(inp.value), l20)) {
+        alert('L0 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp1.value), l21)) {
+        alert('L1 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp2.value), l22)) {
+        alert('L2 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp3.value), f2)) {
+        alert("f''(x) value is incorrect, calculate again.");
         return;
     }
     btn.remove();
     inp.remove();
-    sp.innerText = `${ei.toFixed(4)}`;
-    activity2();
+    sp.innerText = `${l20.toFixed(2)}`;
+    inp1.remove();
+    sp1.innerText = `${l21.toFixed(2)}`;
+    inp2.remove();
+    sp2.innerText = `${l22.toFixed(2)}`;
+    inp3.remove();
+    sp3.innerText = `${f2.toFixed(2)}`;
+    alert('Your entered values are correct!!');
 }
 //# sourceMappingURL=activity2.js.map

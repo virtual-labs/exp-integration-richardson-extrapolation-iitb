@@ -1,20 +1,20 @@
 [
-   {
-      "question": "In Richardson extrapolation the error estimate is of order",
-      "qid": 1,
-      "option_a": "O(h<sup>3</sup>)",
-      "option_b": "O(h<sup>4</sup>)",
-      "option_c": "O(h<sup>2</sup>)",
-      "option_d": "O(h)",
-      "correct_option": "b"
-   },
-   {
-      "question": "The integration by Richardson extrapolation is",
-      "qid": 2,
-      "option_a": "<span style='display:inline-block;'>$$ \\frac{1}{3}I(h_2) - \\frac{4}{3}I(h_1) $$</span>",
-      "option_b": "<span style='display:inline-block;'>$$ \\frac{4}{3}I(h_1) - \\frac{1}{3}I(h_2) $$</span>",
-      "option_c": "<span style='display:inline-block;'>$$ \\frac{1}{3}I(h_1) - \\frac{4}{3}I(h_2) $$</span>",
-      "option_d": "<span style='display:inline-block;'>$$ \\frac{4}{3}I(h_2) - \\frac{1}{3}I(h_1) $$</span>",
-      "correct_option": "d"
-   }
+    {
+        "question": "Given n+1 data pairs, a unique polynomials of degree _____________ passes through the n+1 data points.",
+        "qid": 1,
+        "option_a": "n",
+        "option_b": "n+1",
+        "option_c": "n+1 or less",
+        "option_d": "n or less",
+        "correct_option": "d"
+    },
+    {
+        "question": "Given the two points [a, f(a)], [b, f(b)], the linear Lagrange polynomial f<sub>1</sub>x that passes through these two points is given by",
+        "qid": 2,
+        "option_a": "<span style='display: inline-block'>$$ f_1(x) = \\frac{x-b}{a-b} f(a) + \\frac{x-a}{a-b} f(b) $$</span>",
+        "option_b": "<span style='display: inline-block'>$$ f_1(x) = \\frac{x}{b-a} f(a) + \\frac{x}{b-a} f(b) $$</span>",
+        "option_c": "<span style='display: inline-block'>$$ f_1(x) = \\frac{x-b}{a-b} f(a) + \\frac{x-a}{b-a} f(b) $$</span>",
+        "option_d": "<span style='display: inline-block'>$$ f_1(x) = f(a) + \\frac{f(b)-f(a)}{b-a} f(b-a) $$</span>",
+        "correct_option": "c"
+    }
 ]

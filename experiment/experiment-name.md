@@ -1,1 +1,1 @@
-## Integration - Richardson Extrapolation for Integration
+## Differentiation - Method Based on Interpolation (Lagrange's Method)
