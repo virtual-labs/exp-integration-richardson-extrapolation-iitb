@@ -1,15 +1,14 @@
 let maindiv = document.getElementById('pannelcreate');
 function activity1() {
     let text = `
-
     <div class='divide'>
     <div style='margin-top: 2vw;'>
         <br>
         <h4 class="center-text fs-20px fw-600"></h4>
 
         <div class="fs-16px">
-        <h5>Richardson Extrapolation for Integration</h5>
-        <p>Learning Objective: Calculate exact integral value </p>
+        <h5>Differentiation Method Based on Interpolation (Lagrange's Method)</h5>
+        <p>Learning Objective: Find f'(x)</p>
         </div>
 
         <button class='btn btn-info std-btn' style='position: relative; left: 50vw;' onclick='start_act1();' id='temp-btn-1' >Next</button>
@@ -25,67 +24,104 @@ function start_act1() {
     if (temp_btn) {
         temp_btn.remove();
     }
-    let btn_text = get_collapse_btn_text("Calculate exact integral", "tb1-box");
+    let btn_text = get_collapse_btn_text("Calculate y values", "tb1-box");
     let text = `
     ${btn_text}
     <div class='collapse divide' style='style='margin-top: 2vw; 'width: 80%; margin: auto;' id='tb1-box'>
 
-        <div style='text-align: center;'>
-            <p style='text-align: center;'><span style='font-style: 25px;'>
-                $$ f(x) \\ = \\ ${random_val} + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5  $$
-            </span></p>
-            <p style='text-align: center;'><span style='font-style: 25px;'>
-                $$  \\int_{0}^{0.8}f(x)dx \\ = \\ \\int_{0}^{0.8}(${random_val} + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5) \\ dx $$
-            </span></p>
-            
-            <div style='text-align: center;'>Exact integral value = <input type='number' class='form-control' style='display: inline !important; width: 130px;' id='ei-inp' > <span id='ei-val-sp'></span></div>
-
-        </div>
+        <div id='a1-tab' ></div>
 
         <br>
 
-        <div style='text-align: center;'><button class='btn btn-info std-btn' onclick='verify_ei();'  id='temp-btn-1234' >Next</button></div>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f(x) = f_0L_0 + f_1L_1 + f_2L_2 $$</span></p>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f(x) = f_0\\frac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)} + f_1\\frac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)} + f_2\\frac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)} $$</span></p>
 
-        <div id='piv-inp-div' style='text-align: center;'></div>
         <br>
 
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f'(x) = f_0\\frac{2x - x_1 - x_2}{(x_0 - x_1)(x_0 - x_2)} + f_1\\frac{2x - x_0 - x_2}{(x_1 - x_0)(x_1 - x_2)} + f_2\\frac{2x - x_0 - x_1}{(x_2 - x_0)(x_2 - x_1)} $$</span></p>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ f'(x) = f_0L'_0 + f_1L'_1 + f_2L'_2 $$</span></p>
+
+        <br>
+
+        <p style='text-align: center; font-size: 18px;'>Find <span style='display: inline-block;' >$$ f'(x) $$</span></p>
+        <p style='text-align: center; font-size: 18px;'><span style='display: inline-block;' >$$ x = ${x} $$</span></p>
+
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L'_0 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l1-inp' > <span id='l1-val-sp'></span></div>
+
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L'_1 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l2-inp' > <span id='l2-val-sp'></span></div>
+
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ L'_2 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='l3-inp' > <span id='l3-val-sp'></span></div>
+
+        <div style='text-align: center;'><span style='font-size: 24px; display: inline-block;'>$$ f'(x) = f_0L'_0 + f_1L'_1 + f_2L'_2 \\ $$</span> = <input type='number' class='form-control' style='display: inline !important; width: 120px;' id='f1-inp' > <span id='f1-val-sp'></span></div>
+    
+        <br>
+
+        <div style='text-align: center;'><button class='btn btn-info std-btn' onclick='verify_a1();'  id='temp-btn-120' >Verify</button></div>
+        
     </div>
 
     `;
     maindiv.innerHTML += text;
     hide_all_steps();
     show_step('tb1-box');
-    calculate_ei();
+    show_xy();
+    internal_calculations0();
     setTimeout(() => { MathJax.typeset(); }, 300);
 }
-// function show_xy() {
-//     let div: HTMLDivElement = <HTMLDivElement> document.getElementById('piv-inp-div');
-//     let header = ['x'];
-//     tb_data = [['y']]
-//     for(let i=0; i<7; i++) {
-//         header.push(`${x+i}`);
-//         tb_data[0].push(y_vals[i]);
-//     }
-//     let tb = new Verify_Table(header, tb_data, 0, [1, 2, 3, 4, 5, 6, 7], y_vals, "", div, true, activity2);
-//     tb.load_table();
-// }   
-function calculate_ei() {
-    let ul = 0.8;
-    ei = random_val * ul + (25 / 2) * (Math.pow(ul, 2)) - (200 / 3) * (Math.pow(ul, 3)) + (675 / 4) * (Math.pow(ul, 4)) - (900 / 5) * (Math.pow(ul, 5)) + (400 / 6) * (Math.pow(ul, 6));
-    return ei;
+function internal_calculations0() {
+    l10 = (2 * x - X[1] - X[2]) / ((X[0] - X[1]) * (X[0] - X[2]));
+    l11 = (2 * x - X[0] - X[2]) / ((X[1] - X[0]) * (X[1] - X[2]));
+    l12 = (2 * x - X[0] - X[1]) / ((X[2] - X[0]) * (X[2] - X[1]));
+    f1 = Y[0] * l10 + Y[1] * l11 + Y[2] * l12;
 }
-function verify_ei() {
-    let btn = document.getElementById('temp-btn-1234');
-    console.log(`exact integral value => ${ei}`);
-    let inp = document.getElementById('ei-inp');
-    let sp = document.getElementById('ei-val-sp');
-    if (!verify_values(parseFloat(inp.value), ei)) {
-        alert('Exact integral value is incorrect, calculate again.');
+function show_xy() {
+    let div = document.getElementById('a1-tab');
+    let header = ['x'];
+    tb_data = [['f(x)']];
+    for (let i = 0; i < 3; i++) {
+        header.push(` x<sub>${i}</sub> = ${X[i]}`);
+        tb_data[0].push(`f<sub>${i}</sub> = ` + Y[i]);
+    }
+    let tb = new Display_Table(header, tb_data, div);
+    tb.load_table();
+}
+function verify_a1() {
+    let btn = document.getElementById('temp-btn-120');
+    console.log(`l0 => ${l10}, l1 => ${l11}, l2 => ${l12}, y = ${f1}`);
+    let inp = document.getElementById('l1-inp');
+    let sp = document.getElementById('l1-val-sp');
+    let inp1 = document.getElementById('l2-inp');
+    let sp1 = document.getElementById('l2-val-sp');
+    let inp2 = document.getElementById('l3-inp');
+    let sp2 = document.getElementById('l3-val-sp');
+    let inp3 = document.getElementById('f1-inp');
+    let sp3 = document.getElementById('f1-val-sp');
+    if (!verify_values(parseFloat(inp.value), l10)) {
+        alert('L0 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp1.value), l11)) {
+        alert('L1 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp2.value), l12)) {
+        alert('L2 value is incorrect, calculate again.');
+        return;
+    }
+    if (!verify_values(parseFloat(inp3.value), f1)) {
+        alert("f'(x) value is incorrect, calculate again.");
         return;
     }
     btn.remove();
     inp.remove();
-    sp.innerText = `${ei.toFixed(4)}`;
+    sp.innerText = `${l10.toFixed(2)}`;
+    inp1.remove();
+    sp1.innerText = `${l11.toFixed(2)}`;
+    inp2.remove();
+    sp2.innerText = `${l12.toFixed(2)}`;
+    inp3.remove();
+    sp3.innerText = `${f1.toFixed(2)}`;
+    alert('Your entered values are correct!!');
     activity2();
 }
 activity1();
