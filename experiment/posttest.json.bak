@@ -1,20 +1,28 @@
 [
-   {
-      "question": "<table><tr> <th>x</th> <th>x<sub>0</sub> = 3</th> <th>x<sub>1</sub> = 4</th> <th>x<sub>2</sub> = 5</th> </tr> <tr> <td>f(x)</td> <td>f<sub>0</sub> = 90</td> <td>f<sub>1</sub> = 261</td> <td>f<sub>2</sub> = 631</td> </tr></table> Find f'(3.5)",
-      "qid": 1,
-      "option_a": "168",
-      "option_b": "165",
-      "option_c": "177",
-      "option_d": "171",
-      "correct_option": "d"
-   },
-   {
-      "question": "<table><tr> <th>x</th> <th>x<sub>0</sub> = 2</th> <th>x<sub>1</sub> = 3</th> <th>x<sub>2</sub> = 4</th> </tr> <tr> <td>f(x)</td> <td>f<sub>0</sub> = 25</td> <td>f<sub>1</sub> = 87</td> <td>f<sub>2</sub> = 265</td> </tr></table> Find f'(2.5)",
-      "qid": 2,
-      "option_a": "62",
-      "option_b": "59",
-      "option_c": "53",
-      "option_d": "67",
-      "correct_option": "a"
-   }
+    {
+        "question": "Given that: $$ f(x) = 0.23 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5 $$. Find the value of $$ \\int_0^{0.8} f(x) dx $$ with Richardson Extrapolation.",
+        "qid": 1,
+        "option_a": "1.672",
+        "option_b": "2.142",
+        "option_c": "1.223",
+        "option_d": "1.790",
+        "correct_option": "a"
+    },
+    {
+        "question": "Given that: $$ f(x) = 0.23 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5 $$. In the integration $$ \\int_0^{0.8} f(x) dx $$ using Richardson Extrapolation method, what is the percentage error w.r.t to direct solution.",
+        "qid": 2,
+        "option_a": "More than 5%",
+        "option_b": "More than 2%",
+        "option_c": "More than 10%",
+        "option_d": "Less than 2%",
+        "correct_option": "d"
+    }
 ]
+
+
+
+
+
+
+
+
