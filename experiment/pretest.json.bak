@@ -1,0 +1,20 @@
+[
+   {
+      "question": "In Richardson extrapolation the error estimate is of order",
+      "qid": 1,
+      "option_a": "O(h<sup>3</sup>)",
+      "option_b": "O(h<sup>4</sup>)",
+      "option_c": "O(h<sup>2</sup>)",
+      "option_d": "O(h)",
+      "correct_option": "b"
+   },
+   {
+      "question": "The integration by Richardson extrapolation is",
+      "qid": 2,
+      "option_a": "<span style='display:inline-block;'>$$ \\frac{1}{3}I(h_2) - \\frac{4}{3}I(h_1) $$</span>",
+      "option_b": "<span style='display:inline-block;'>$$ \\frac{4}{3}I(h_1) - \\frac{1}{3}I(h_2) $$</span>",
+      "option_c": "<span style='display:inline-block;'>$$ \\frac{1}{3}I(h_1) - \\frac{4}{3}I(h_2) $$</span>",
+      "option_d": "<span style='display:inline-block;'>$$ \\frac{4}{3}I(h_2) - \\frac{1}{3}I(h_1) $$</span>",
+      "correct_option": "d"
+   }
+]
